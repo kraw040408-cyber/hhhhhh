@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прокат автомобилей "AutoDrive" — Интерактивный Прототип</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- СКРЫТЫЕ ПЕРЕКЛЮЧАТЕЛИ ЭКРАНОВ (CSS ТРЮК) -->
+    <input type="radio" name="screen-switcher" id="tab-catalog" checked>
+    <input type="radio" name="screen-switcher" id="tab-booking">
+    <input type="radio" name="screen-switcher" id="tab-profile">
+
+    <!-- Шапка сайта с навигацией -->
+    <header class="header">
+        <div class="logo">AutoDrive 🚗</div>
+        <nav class="nav">
+            <label for="tab-catalog" class="nav-btn btn-catalog">Каталог авто</label>
+            <label for="tab-booking" class="nav-btn btn-booking">Бронирование</label>
+            <label for="tab-profile" class="nav-btn btn-profile">Мои поездки</label>
+        </nav>
+    </header>
+
+    <main class="main-container">
+
+        <!-- ЭКРАН 1: КАТАЛОГ АВТОМОБИЛЕЙ -->
+        <section id="catalog-screen" class="screen">
+            <h2>Доступные автомобили</h2>
+            <p class="subtitle">Выберите идеальный автомобиль для города или путешествий.</p>
+            
+            <div class="catalog-grid">
+                <!-- Карта 1 -->
+                <div class="card">
+                    <div class="card-image img-sedan"></div>
+                    <div class="card-content">
+                        <h3>Hyundai Solaris</h3>
+                        <p>Экономичный городской седан. Автомат, кондиционер, расход 6л/100км. Отличный выбор на каждый день.</p>
+                        <span class="price">2 500 руб/сутки</span>
+                        <label for="tab-booking" class="book-btn" onclick="selectCar(0)">Забронировать</label>
+                    </div>
+                </div>
+                <!-- Карта 2 -->
+                <div class="card">
+                    <div class="card-image img-suv"></div>
+                    <div class="card-content">
+                        <h3>Geely Coolray</h3>
+                        <p>Современный городской кроссовер. Климат-контроль, парктроники, мультимедиа с Apple CarPlay.</p>
+                        <span class="price">4 000 руб/сутки</span>
+                        <label for="tab-booking" class="book-btn" onclick="selectCar(1)">Забронировать</label>
+                    </div>
+                </div>
+                <!-- Карта 3 -->
+                <div class="card">
+                    <div class="card-image img-business"></div>
+                    <div class="card-content">
+                        <h3>BMW 5 Series</h3>
+                        <p>Бизнес-класс для ценителей комфорта. Кожаный салон, мощный двигатель, премиальная аудиосистема.</p>
+                        <span class="price">9 000 руб/сутки</span>
+                        <label for="tab-booking" class="book-btn" onclick="selectCar(2)">Забронировать</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 2: ФОРМА БРОНИРОВАНИЯ -->
+        <section id="booking-screen" class="screen">
+            <h2>Оформление аренды</h2>
+            <div class="form-container">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="car-class">Класс автомобиля (желаемый):</label>
+                        <select id="car-class">
+                            <option value="2500">Эконом (Hyundai Solaris)</option>
+                            <option value="4000">Комфорт (Geely Coolray)</option>
+                            <option value="9000">Бизнес (BMW 5 Series)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-name">ФИО водителя:</label>
+                        <input type="text" id="user-name" required placeholder="Иванов Иван Иванович">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-license">Серия и номер водительского удостоверения:</label>
+                        <input type="text" id="user-license" required placeholder="99 00 123456">
+                    </div>
+                    <div class="form-group">
+                        <label for="start-date">Дата начала аренды:</label>
+                        <input type="date" id="start-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">Дата возврата:</label>
+                        <input type="date" id="end-date" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Подтвердить аренду</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 3: ЛИЧНЫЙ КАБИНЕТ -->
+        <section id="profile-screen" class="screen">
+            <h2>История и активные брони</h2>
+            <p class="subtitle">Управление вашими поездками (данные сохраняются в браузере).</p>
+            
+            <div class="table-container">
+                <table class="booking-table">
+                    <thead>
+                        <tr>
+                            <th>Автомобиль</th>
+                            <th>Период аренды</th>
+                            <th>Стоимость</th>
+                            <th>Статус</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-tbody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

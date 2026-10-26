@@ -1,0 +1,307 @@
+/* --- CSS МАГИЯ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ЭКРАНОВ --- */
+input[name="screen-switcher"] {
+    display: none;
+}
+
+.screen {
+    display: none;
+}
+
+#tab-catalog:checked ~ .header .nav .btn-catalog,
+#tab-booking:checked ~ .header .nav .btn-booking,
+#tab-profile:checked ~ .header .nav .btn-profile {
+    background-color: #f39c12; 
+    color: white;
+}
+
+#tab-catalog:checked ~ .main-container #catalog-screen { display: block; }
+#tab-booking:checked ~ .main-container #booking-screen { display: block; }
+#tab-profile:checked ~ .main-container #profile-screen { display: block; }
+
+/* --- ОБЩИЕ СТИЛИ --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+    color: #2f3640;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #7f8c8d;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.nav-btn:hover {
+    background-color: #f1f2f6;
+    color: #2f3640;
+}
+
+/* Стилизация контейнеров и контента */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Сетка каталога */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заглушки для изображений (CSS Градиенты) */
+.card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-sedan {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    position: relative;
+}
+.img-sedan::after { content: "🚗 Эконом-класс"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 18px; }
+
+.img-suv {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    position: relative;
+}
+.img-suv::after { content: "🚙 Комфорт-класс"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 18px; }
+
+.img-business {
+    background: linear-gradient(135deg, #34495e, #1a252f);
+    position: relative;
+}
+.img-business::after { content: "🤵 Бизнес-класс"; position: absolute; bottom: 15px; left: 15px; color: white; font-weight: bold; font-size: 18px; }
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.book-btn {
+    display: block;
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+.book-btn:hover {
+    background-color: #34495e;
+}
+
+/* --- СТИЛИ ДЛЯ ФОРМЫ БРОНИРОВАНИЯ --- */
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #2f3640;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, 
+.form-container select:focus {
+    border-color: #f39c12;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    background-color: #f39c12;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    user-select: none;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #e67e22;
+}
+
+/* --- СТИЛИ ДЛЯ ТАБЛИЦЫ ПРОФИЛЯ --- */
+.table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.booking-table th, 
+.booking-table td {
+    padding: 15px 20px;
+}
+
+.booking-table th {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: 600;
+}
+
+.booking-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.booking-table tr:last-child {
+    border-bottom: none;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status.confirmed {
+    background-color: #e3f2fd;
+    color: #1e88e5;
+}
+
+.status.completed {
+    background-color: #e8f5e9;
+    color: #43a047;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.delete-btn:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    .booking-table th, 
+    .booking-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
